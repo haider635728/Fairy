@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fairy store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffccff, #ccffff, #ffffcc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background: #ff6699;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            background: #f9f9f9;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Styles for the modal */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>مرحبا بكم في متجر Fairy للملابس</h1>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="best-customers.html">أفضل الزبائن</a>
+        </nav>
+    </header>
+    <section>
+        <h2>استمتع بأحدث صيحات الموضة!</h2>
+        <p>نحن نقدم أفضل الملابس بأفضل الأسعار.</p>
+        <p>تسوق الآن واستمتع بالتخفيضات!</p>
+    </section>
+    <section>
+        <h2>منتجاتنا</h2>
+        <div class="products">
+            <div class="product" onclick="openModal('فستان صيفي', '25,000 دينار', 'فستان صيفي رائع يناسب جميع المناسبات.', '3.jpg')">
+                <h3>فستان صيفي</h3>
+                <p>سعر: 25,000 دينار</p>
+            </div>
+            <div class="product" onclick="openModal('بدي قطن', '15,000 دينار', 'بدي مصنوع من القطن 100%، مريح وأنيق ','1.jpg')">
+                <h3>بدي قطن</h3>
+                <p>سعر: 15,000 دينار</p>
+            </div>
+            <div class="product" onclick="openModal('سروال جينز', '30,000 دينار', 'جينز عالي الجودة يناسب جميع الأعمار.', '2.jpg')">
+                <h3>سروال جينز</h3>
+                <p>سعر: 30,000 دينار</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" src="" alt="Product Image" style="width: 100%; max-width: 300px;">
+            <p id="modalPrice"></p>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2024 متجر Fairy</p>
+    </footer>
+
+    <script>
+        function openModal(title, price, description, image) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalPrice').innerText = 'سعر: ' + price;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('modalImage').src = image; // تأكد من وضع صورة مناسبة
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>
